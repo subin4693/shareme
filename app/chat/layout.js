@@ -1,14 +1,14 @@
-import "./globals.css";
+import "../globals.css";
 import {
     Navbar,
     Rightsidebar,
     Leftsidebar,
     Bottombar,
-} from "../components/index";
+} from "@/components/index";
 
 export const metadata = {
-    title: "Share me",
-    description: "Share your images",
+    title: "Chats",
+    description: "chat with your squard",
 };
 
 export default function RootLayout({ children }) {
@@ -24,9 +24,7 @@ export default function RootLayout({ children }) {
                     <session className="rounded-md w-screen lg:w-full">
                         {children}
                     </session>
-                    <div className="hidden lg:block">
-                        <Rightsidebar />
-                    </div>
+                    <div className="hidden lg:block"></div>
                     <Bottombar />
                 </main>
             </body>

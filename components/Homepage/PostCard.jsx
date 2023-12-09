@@ -19,6 +19,7 @@ const PostCard = ({ selectedPost, setSelectedPost }) => {
 
     const handleSave = () => {
         console.log("handle save");
+        alert("post saved");
     };
 
     const handleClose = () => {
@@ -75,12 +76,14 @@ const PostCard = ({ selectedPost, setSelectedPost }) => {
                 onClick={(e) => {
                     e.stopPropagation();
                 }}
-                className=" bg-gray-200"
+                className=" bg-black lg:flex lg:w-[80vw] lg:items-center lg:justify-center"
             >
                 <div
                     className={`${
-                        selectedPost.view === "desktop" ? "h-fit w-screen" : ""
-                    } relative`}
+                        selectedPost.view === "desktop"
+                            ? "h-fit w-screen md:w-[70vw]"
+                            : "h-[70vh] w-fit md:h-[80vh] "
+                    } relative lg:flex-1 `}
                 >
                     <img
                         src={selectedPost.url}
@@ -88,7 +91,7 @@ const PostCard = ({ selectedPost, setSelectedPost }) => {
                         className="object-contain w-full h-full"
                     />
                 </div>
-                <div>
+                <div className="lg:flex-1 bg-gray-200  ">
                     <div className="flex gap-5 items-center p-2 relative">
                         <button
                             onClick={() => setSelectedTab("likes")}
@@ -116,27 +119,42 @@ const PostCard = ({ selectedPost, setSelectedPost }) => {
                             }`}
                         ></span>
                     </div>
-                    <div className="max-h-[300px] overflow-y-auto">
+                    <div
+                        className={`${
+                            selectedPost.view === "desktop"
+                                ? "h-[300px]"
+                                : "h-[700px]"
+                        }  overflow-y-auto   `}
+                    >
                         {selectedTab === "likes" ? (
-                            <div className="flex items-center gap-5 justify-between p-2">
-                                <div className="flex items-center gap-5 justify-between ">
-                                    <Avatar>
-                                        <AvatarImage
-                                            src="/profile.jpg"
-                                            className="object-cover"
-                                        />
-                                        <AvatarFallback>SM</AvatarFallback>
-                                    </Avatar>
-                                    subin_3.0
-                                </div>
-                                <Button>Squard</Button>
-                            </div>
-                        ) : (
-                            <div>
-                                {comments.map((comment) => (
-                                    <div>{comment.commentTxt}</div>
+                            <>
+                                {[1, 1, 1, 1, 1, 1, 1].map((va, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-5 justify-between p-2"
+                                    >
+                                        <div className="flex items-center gap-5 justify-between ">
+                                            <Avatar>
+                                                <AvatarImage
+                                                    src="/profile.jpg"
+                                                    className="object-cover"
+                                                />
+                                                <AvatarFallback>
+                                                    SM
+                                                </AvatarFallback>
+                                            </Avatar>
+                                            subin_3.0
+                                        </div>
+                                        <Button>Squard</Button>
+                                    </div>
                                 ))}
-                            </div>
+                            </>
+                        ) : (
+                            <>
+                                {comments.map((comment, index) => (
+                                    <div key={index}>{comment.commentTxt}</div>
+                                ))}
+                            </>
                         )}
                     </div>
                 </div>

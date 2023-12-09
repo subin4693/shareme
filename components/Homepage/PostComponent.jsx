@@ -14,6 +14,21 @@ const PostComponent = ({ imageUrl, view, setSelectedPost }) => {
         setSelectedPost({ url: imageUrl, view });
     };
 
+    const handleLike = () => {
+        console.log("handle like");
+    };
+    const handleComment = () => {
+        console.log("handle comment");
+    };
+
+    const handleSave = () => {
+        console.log("handle like");
+    };
+
+    const squardHandle = () => {
+        console.log("handle squard");
+    };
+
     return (
         <div
             className="border shadow w-full p-2 rounded-md  "
@@ -33,7 +48,9 @@ const PostComponent = ({ imageUrl, view, setSelectedPost }) => {
                         <h2 className="text-sm">@subin_3.0</h2>
                     </span>
                 </Link>
-                <Button variant="secondary">Add Squard</Button>
+                <Button variant="secondary" onClick={squardHandle}>
+                    Add Squard
+                </Button>
             </div>
             <div
                 className={`w-full relative  ${
@@ -50,15 +67,24 @@ const PostComponent = ({ imageUrl, view, setSelectedPost }) => {
                 />
             </div>
             <div className="flex gap-5 mt-5">
-                <span className="flex justify-start items-center gap-2">
+                <span
+                    className="flex justify-start items-center gap-2"
+                    onClick={handleLike}
+                >
                     <IoHeartSharp className="text-red-500" size={30} />
                     Likes
                 </span>
-                <span className="flex justify-start items-center gap-2">
+                <span
+                    className="flex justify-start items-center gap-2"
+                    onClick={handleComment}
+                >
                     <TfiCommentsSmiley size={30} />
                     Comment
                 </span>
-                <span className="flex justify-start items-center gap-2">
+                <span
+                    className="flex justify-start items-center gap-2"
+                    onClick={handleSave}
+                >
                     <CiSaveDown1 size={30} />
                     Save
                 </span>
